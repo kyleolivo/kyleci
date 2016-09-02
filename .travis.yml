@@ -1,16 +1,18 @@
 language: ruby
 sudo: required
 services:
-- docker
+  - docker
 env:
-- DOCKER_COMPOSE_VERSION=1.8.0
+  - DOCKER_COMPOSE_VERSION=1.8.0
 before_install:
-- sudo rm /usr/local/bin/docker-compose
-- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-- chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 script:
-- docker-compose up
+  - docker-compose up -d
+  - CONTENT=`curl http://localhost 2>/dev/null | grep "Kyle CI"`
+  - test -n "$CONTENT"
 notifications:
   slack:
     rooms:
