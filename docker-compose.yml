@@ -1,0 +1,8 @@
+version: '2'
+services:
+  web:
+    image: nginx:1.11.3
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "80:80"
