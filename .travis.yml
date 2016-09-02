@@ -1,18 +1,19 @@
 language: ruby
-
 sudo: required
-
 services:
-  - docker
-
+- docker
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
-
+- DOCKER_COMPOSE_VERSION=1.4.2
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin 
-
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
 script:
-  - docker-compose up
+- docker-compose up
+notifications:
+  slack:
+    rooms:
+      secure: ReAJYaVRToe+xqkcDXdyKF91vTBJUQiBq/dGlPNXr3Hvr6ugUhts1gHzwNJHkUdqwNT1K/rUDHVamCFkJlS7aevOOq2FmRMVpz4RSSIYUIXZhnCgRnEEl6byNl1SWYci4v1m+eNj+emvIlahP8ZDTKn3Hvu3Sw+wLin1KsA+L88yL1JoGyPJgjm/LS+0ktu8d9otAC+qk3dwuDPllw01GlWiU2JIjcZgLLCckPjUVEDCAByljUoWeU9t6hsui2le/zEb1MDrJV/bKjPco0FkjlWwnO5Pc1XWhCkcls0qhp5zrNZvbVGhbmHQ86bdtEoRpnalBTihOHsOP4fRXiEKnxfojPMsyt/NEOTlYaWJwFdlzh7FME/dvMCdSgg/wQIZYmVH52YRBnrfoOZYd0x3E+691vesBGbAefjmvpSZSCej9acs9DvGqAM9TcJBJzOuhu6u2rPW4KzmEFfyGdcH0/YJWcSv7oWYg7yTgYI29/YH9EcYL+oovyEp6gpfsAnf4PY6qDKwRek3xVvlTN9/tcUL0AG92L3hxoMoYsqhK1fZ775Na8j3ZzOHOOuAntXg0mBzrrDE/5R+qgTNdmcEsNqYPX2FXEJfKPNYCbWL5Ntv3t0s90XvMa1N7iyE9P3MrfmuZ3Pr9PiiVTgwSpnECUt9aRGIsGCeI896COZc3Jk=
+  email: false
