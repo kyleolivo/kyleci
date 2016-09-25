@@ -6,3 +6,8 @@ services:
       - ./frontend:/usr/share/nginx/html
     ports:
       - "80:80"
+  foreman:
+    image: openjdk:8
+    volumes:
+      - ./foreman/:/foreman
+    command: java -jar /foreman/foreman.jar
