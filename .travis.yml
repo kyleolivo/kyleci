@@ -10,6 +10,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 script:
+  - cd foreman && ./gradlew build
   - docker-compose up -d
   - CONTENT=`curl http://localhost 2>/dev/null | grep "Kyle CI"`
   - test -n "$CONTENT"
