@@ -1,4 +1,4 @@
-language: ruby
+language: java
 sudo: required
 services:
   - docker
@@ -10,7 +10,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 script:
-  - cd foreman && ./gradlew build
+  - cd foreman && ./gradlew assemble && ./gradlew check
   - docker-compose up -d
   - CONTENT=`curl http://localhost 2>/dev/null | grep "Kyle CI"`
   - test -n "$CONTENT"
