@@ -1,17 +1,12 @@
 package com.kyleolivo.kyleci;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.net.URI;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BuildRequestTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void correctConstruction() throws Exception {
@@ -20,11 +15,9 @@ public class BuildRequestTest {
         assertEquals(repoURL, buildRequest.getRepoURL());
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void nullRepoURL() throws Exception {
-        thrown.expect(NullPointerException.class);
-        thrown.expectMessage("null repoURL");
-
         new BuildRequest(null);
     }
+
 }

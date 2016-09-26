@@ -23,12 +23,14 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'com.amazonaws:aws-java-sdk:1.11.37'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    compile 'com.fasterxml.jackson:jackson-parent:2.8'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:2.0.2-beta'
 }
 
 jar {
