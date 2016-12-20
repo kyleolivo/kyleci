@@ -1,1 +1,1 @@
-A very simple CI server
+A very simple CI server.
